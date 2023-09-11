@@ -85,6 +85,7 @@ function addDepartment(){
         //have a callback to populate the table with the user's response
     ]).then(answer=>{
         db.query(`INSERT INTO department (name) VALUES(?)`, [answer.name], err=>{
+            console.log("Department added successfully!");
             viewDepartments();
         })
     })
@@ -113,6 +114,7 @@ function addRole(){
             ]).then(answer=>{
                 //Use query to add on to the role table with values from the user's input
                 db.query(`INSERT INTO role (title, salary, department_id) VALUES(?,?,?)`, [answer.title, answer.salary, answer.department_id], err=>{
+                    console.log("Role added successfully!");
                     viewRoles();
                 })
             })
@@ -121,7 +123,7 @@ function addRole(){
 function addEmployee(){
     //value and name act as keywords for the inquirer prompt
     db.query(`SELECT id as value, title as name FROM role `, (err,roleData)=>{
-        db.query(`SELECT id as value, CONCAT(first_name, ' ', last_name) as name FROM employee WHERE manager_id is NULL`, (err, managerData)=>{
+        db.query(`SELECT id as value, CONCAT(first_name, ' ', last_name) as name FROM employee`, (err, managerData)=>{
             inquirer.prompt([
                 {
                     type:"input",
@@ -150,7 +152,8 @@ function addEmployee(){
             ]).then(answer=>{
                 //Use query to add on to the employee table with values from the user's input
                 db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES(?,?,?,?)`, [answer.first_name, answer.last_name, answer.role_id, answer.manager_id], err=>{
-                    viewEmployees()
+                    console.log("Employee added successfully!");
+                    viewEmployees();
                 })
             })
         })
@@ -177,6 +180,7 @@ function updateEmployeeRole(){
             ]).then(answer=>{
                 //Use query to update the employee table with values from the user's input
                 db.query(`UPDATE employee SET role_id = ? WHERE id = ?`, [answer.role_id, answer.employee_id], err=>{
+                    console.log("Employee updated successfully!");
                     viewEmployees()
                 })
             })

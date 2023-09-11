@@ -21,7 +21,7 @@ You can access this project by clicking the following link: https://github.com/T
 4. Follow the prompts shown in the terminal
 
 Watch the video below to see a walkthrough of the application:
-<a href="https://watch.screencastify.com/v/S7sqbkbTgmPE8JI98nPA">![Application screenshot](./images/screenshot.PNG)()</a>
+<a href="https://watch.screencastify.com/v/ZsvjhwmUxaz7uUqUgpID">![Application screenshot](./Assets/images/applicationScreenshot.PNG)()</a>
 
 ## Credits
 
